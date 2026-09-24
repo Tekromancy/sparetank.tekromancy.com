@@ -1,0 +1,187 @@
+---
+// Interactive Battery Health & Longevity Simulator
+---
+
+<div class="rounded-2xl border border-border-hover bg-card/80 p-6 sm:p-10 shadow-2xl backdrop-blur-xl max-w-4xl mx-auto">
+  <div class="text-center max-w-xl mx-auto mb-8 space-y-2">
+    <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-brand-cyan/10 border border-brand-cyan/20 text-brand-cyan text-xs font-mono font-semibold">
+      <span>🔬</span> Electrochemical Cell Simulator
+    </div>
+    <h3 class="text-2xl sm:text-3xl font-extrabold tracking-tight">Interactive Battery Longevity Calculator</h3>
+    <p class="text-muted text-xs sm:text-sm">
+      See how SpareTank's 25%–75% cycle rule protects your lithium pouch cells from premature capacity fade compared to standard overnight charging.
+    </p>
+  </div>
+
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+    <!-- Controls -->
+    <div class="space-y-6 bg-surface/50 p-6 rounded-xl border border-border-subtle">
+      <div>
+        <label for="capacityInput" class="block text-xs font-mono text-muted uppercase tracking-wider mb-2 flex justify-between">
+          <span>Battery Capacity</span>
+          <span id="capacityVal" class="text-main font-bold">5000 mAh</span>
+        </label>
+        <input 
+          id="capacityInput" 
+          type="range" 
+          min="3000" 
+          max="6500" 
+          step="100" 
+          value="5000" 
+          class="w-full h-2 bg-card rounded-lg appearance-none cursor-pointer accent-brand-emerald"
+        />
+        <div class="flex justify-between text-[11px] text-muted font-mono mt-1">
+          <span>3000 mAh</span>
+          <span>5000 mAh (Standard)</span>
+          <span>6500 mAh</span>
+        </div>
+      </div>
+
+      <div>
+        <label for="yearsInput" class="block text-xs font-mono text-muted uppercase tracking-wider mb-2 flex justify-between">
+          <span>Time Horizon</span>
+          <span id="yearsVal" class="text-main font-bold">2.0 Years</span>
+        </label>
+        <input 
+          id="yearsInput" 
+          type="range" 
+          min="1" 
+          max="4" 
+          step="0.5" 
+          value="2" 
+          class="w-full h-2 bg-card rounded-lg appearance-none cursor-pointer accent-brand-cyan"
+        />
+        <div class="flex justify-between text-[11px] text-muted font-mono mt-1">
+          <span>1 Year</span>
+          <span>2 Years</span>
+          <span>3 Years</span>
+          <span>4 Years</span>
+        </div>
+      </div>
+
+      <div>
+        <label for="cyclesInput" class="block text-xs font-mono text-muted uppercase tracking-wider mb-2 flex justify-between">
+          <span>Daily Charge Frequency</span>
+          <span id="cyclesVal" class="text-main font-bold">1.0 Cycle / Day</span>
+        </label>
+        <input 
+          id="cyclesInput" 
+          type="range" 
+          min="0.5" 
+          max="2.5" 
+          step="0.25" 
+          value="1.0" 
+          class="w-full h-2 bg-card rounded-lg appearance-none cursor-pointer accent-brand-emerald"
+        />
+      </div>
+    </div>
+
+    <!-- Comparative Results -->
+    <div class="space-y-5">
+      <!-- Standard Charging -->
+      <div class="p-5 rounded-xl bg-surface border border-red-500/20 space-y-2">
+        <div class="flex items-center justify-between">
+          <span class="text-xs font-bold uppercase tracking-wider text-red-400 flex items-center gap-1.5">
+            <span>❌</span> Standard 0%–100% Habit
+          </span>
+          <span id="standardHealthPct" class="text-xl font-black text-red-400">76%</span>
+        </div>
+        <div class="w-full bg-card h-3 rounded-full overflow-hidden p-0.5 border border-border-subtle">
+          <div id="standardHealthBar" class="bg-red-500 h-full rounded-full transition-all duration-300" style="width: 76%"></div>
+        </div>
+        <p id="standardCapacityRetained" class="text-xs text-muted">
+          Estimated remaining capacity: <strong>3800 mAh</strong> (Severe degradation & throttling)
+        </p>
+      </div>
+
+      <!-- SpareTank Protected -->
+      <div class="p-5 rounded-xl bg-surface border-2 border-brand-emerald/60 space-y-2 glow-emerald">
+        <div class="flex items-center justify-between">
+          <span class="text-xs font-bold uppercase tracking-wider text-brand-emerald flex items-center gap-1.5">
+            <span>🛡️</span> SpareTank 25%–75% Rule
+          </span>
+          <span id="sparetankHealthPct" class="text-2xl font-black text-brand-emerald">92%</span>
+        </div>
+        <div class="w-full bg-card h-3 rounded-full overflow-hidden p-0.5 border border-brand-emerald/40">
+          <div id="sparetankHealthBar" class="bg-brand-emerald h-full rounded-full transition-all duration-300" style="width: 92%"></div>
+        </div>
+        <p id="sparetankCapacityRetained" class="text-xs text-main">
+          Estimated remaining capacity: <strong>4600 mAh</strong> (<span class="text-brand-emerald font-bold">+800 mAh preserved</span>)
+        </p>
+      </div>
+
+      <div class="text-[12px] text-muted text-center pt-2">
+        ⚡ Preserving ~2-3x cycle life by avoiding electrolyte oxidation above 75% and anode strain below 25%.
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  function setupCalculator() {
+    const capacityInput = document.getElementById('capacityInput') as HTMLInputElement | null;
+    const yearsInput = document.getElementById('yearsInput') as HTMLInputElement | null;
+    const cyclesInput = document.getElementById('cyclesInput') as HTMLInputElement | null;
+
+    const capacityVal = document.getElementById('capacityVal');
+    const yearsVal = document.getElementById('yearsVal');
+    const cyclesVal = document.getElementById('cyclesVal');
+
+    const standardHealthPct = document.getElementById('standardHealthPct');
+    const standardHealthBar = document.getElementById('standardHealthBar');
+    const standardCapacityRetained = document.getElementById('standardCapacityRetained');
+
+    const sparetankHealthPct = document.getElementById('sparetankHealthPct');
+    const sparetankHealthBar = document.getElementById('sparetankHealthBar');
+    const sparetankCapacityRetained = document.getElementById('sparetankCapacityRetained');
+
+    if (!capacityInput || !yearsInput || !cyclesInput) return;
+
+    function updateCalculations() {
+      const cap = parseFloat(capacityInput?.value || '5000');
+      const years = parseFloat(yearsInput?.value || '2');
+      const cyclesPerDay = parseFloat(cyclesInput?.value || '1');
+
+      if (capacityVal) capacityVal.textContent = `${cap} mAh`;
+      if (yearsVal) yearsVal.textContent = `${years.toFixed(1)} Years`;
+      if (cyclesVal) cyclesVal.textContent = `${cyclesPerDay.toFixed(2)} Cycles / Day`;
+
+      const totalCycles = years * 365 * cyclesPerDay;
+
+      // Empirical lithium-ion degradation estimation
+      // Standard: full depth of discharge (100% DoD) + high voltage exposure
+      const standardLoss = Math.min(45, Math.round(0.048 * Math.pow(totalCycles, 0.58) + (years * 2.5)));
+      const standardHealth = Math.max(55, 100 - standardLoss);
+      const standardCap = Math.round(cap * (standardHealth / 100));
+
+      // SpareTank: partial depth of discharge (50% DoD ~ 25-75%) + lower peak voltage
+      const spareTankLoss = Math.min(22, Math.round(0.018 * Math.pow(totalCycles, 0.55) + (years * 0.8)));
+      const spareTankHealth = Math.max(78, 100 - spareTankLoss);
+      const spareTankCap = Math.round(cap * (spareTankHealth / 100));
+
+      const preservedMah = spareTankCap - standardCap;
+
+      if (standardHealthPct) standardHealthPct.textContent = `${standardHealth}%`;
+      if (standardHealthBar) standardHealthBar.style.width = `${standardHealth}%`;
+      if (standardCapacityRetained) {
+        standardCapacityRetained.innerHTML = `Estimated remaining capacity: <strong>${standardCap} mAh</strong> (Significant capacity fade)`;
+      }
+
+      if (sparetankHealthPct) sparetankHealthPct.textContent = `${spareTankHealth}%`;
+      if (sparetankHealthBar) sparetankHealthBar.style.width = `${spareTankHealth}%`;
+      if (sparetankCapacityRetained) {
+        sparetankCapacityRetained.innerHTML = `Estimated remaining capacity: <strong>${spareTankCap} mAh</strong> (<span class="text-brand-emerald font-bold">+${preservedMah} mAh preserved</span>)`;
+      }
+    }
+
+    capacityInput.addEventListener('input', updateCalculations);
+    yearsInput.addEventListener('input', updateCalculations);
+    cyclesInput.addEventListener('input', updateCalculations);
+
+    updateCalculations();
+  }
+
+  // Run on initial load and client side navigation
+  setupCalculator();
+  document.addEventListener('astro:page-load', setupCalculator);
+</script>

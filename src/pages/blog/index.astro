@@ -1,0 +1,65 @@
+---
+import Layout from '../../layouts/Layout.astro';
+
+const posts = [
+  {
+    title: "Announcing SpareTank 1.0: Battery Longevity & Reserve Protection",
+    slug: "announcing-sparetank-1-0",
+    date: "September 24, 2026",
+    tag: "Release",
+    summary: "Today we are thrilled to announce SpareTank 1.0 for Android, designed to tackle lithium-ion cycle degradation and prevent dead phone emergencies."
+  },
+  {
+    title: "Why Charging Between 25% and 75% Extends Battery Life by 2-3x",
+    slug: "battery-longevity-science",
+    date: "September 20, 2026",
+    tag: "Engineering",
+    summary: "The electrochemistry behind lithium cells: why high-voltage saturation and deep discharge cause mechanical strain, and how SpareTank mitigates both."
+  },
+  {
+    title: "Comparing SpareTank Free vs SpareTank Pro",
+    slug: "free-vs-pro-editions",
+    date: "September 15, 2026",
+    tag: "Guide",
+    summary: "A deep dive into our product flavors, ad-supported vs 100% ad-free architecture, and choosing the right edition on Google Play."
+  }
+];
+---
+
+<Layout title="News & Releases • SpareTank Blog">
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 py-16">
+    <div class="mb-12 text-center sm:text-left">
+      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-cyan/10 border border-brand-cyan/20 text-brand-cyan text-xs font-mono font-semibold mb-3">
+        Tekromancy Engineering • Updates
+      </div>
+      <h1 class="text-4xl font-extrabold tracking-tight">SpareTank News &amp; Release Log</h1>
+      <p class="text-muted text-sm sm:text-base mt-2">
+        Product release notes, battery engineering insights, and ecosystem updates.
+      </p>
+    </div>
+
+    <div class="space-y-6">
+      {posts.map(post => (
+        <article class="p-8 rounded-2xl bg-card border border-border-subtle hover:border-brand-emerald/40 transition-all group">
+          <div class="flex items-center justify-between text-xs font-mono text-muted mb-3">
+            <span>{post.date}</span>
+            <span class="px-2.5 py-0.5 rounded-full bg-surface border border-border-hover text-brand-emerald font-semibold">
+              {post.tag}
+            </span>
+          </div>
+          <h2 class="text-2xl font-bold mb-3 group-hover:text-brand-emerald transition-colors">
+            <a href={`/blog/${post.slug}`}>
+              {post.title}
+            </a>
+          </h2>
+          <p class="text-muted text-sm leading-relaxed mb-4">
+            {post.summary}
+          </p>
+          <a href={`/blog/${post.slug}`} class="text-sm font-semibold text-brand-cyan hover:underline inline-flex items-center gap-1">
+            Read article →
+          </a>
+        </article>
+      ))}
+    </div>
+  </div>
+</Layout>

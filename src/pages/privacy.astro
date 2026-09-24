@@ -1,0 +1,119 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Privacy Policy • SpareTank by Tekromancy">
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 py-16">
+    <div class="mb-10 text-center sm:text-left">
+      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-emerald/10 border border-brand-emerald/20 text-brand-emerald text-xs font-mono font-semibold mb-3">
+        Compliance • Google Play Developer Policy
+      </div>
+      <h1 class="text-4xl font-extrabold tracking-tight">Privacy Policy for SpareTank</h1>
+      <p class="text-muted text-sm mt-2">
+        Effective Date: September 24, 2026 • Last Updated: September 24, 2026
+      </p>
+    </div>
+
+    <div class="p-8 sm:p-12 rounded-2xl bg-card border border-border-subtle shadow-xl space-y-8 text-sm sm:text-base leading-relaxed text-main/90">
+      <section class="space-y-3">
+        <p>
+          Tekromancy ("we", "our", or "us") developed <strong>SpareTank</strong> and <strong>SpareTank Pro</strong> as utility applications designed to manage battery longevity and preserve emergency reserve battery power.
+        </p>
+        <p>
+          This Privacy Policy explains how our applications handle device information and user privacy in strict compliance with the Google Play Developer Program Policies.
+        </p>
+      </section>
+
+      <hr class="border-border-subtle" />
+
+      <section class="space-y-4">
+        <h2 class="text-xl font-bold text-brand-emerald">1. Information Collection and Use</h2>
+        <div class="space-y-2">
+          <h3 class="font-semibold text-main">A. Personal Information</h3>
+          <p class="text-muted">
+            SpareTank does <strong>NOT</strong> collect, transmit, store, or sell any personally identifiable information (such as your name, email address, phone number, contacts, or location).
+          </p>
+        </div>
+        <div class="space-y-2">
+          <h3 class="font-semibold text-main">B. Battery &amp; Hardware Telemetry</h3>
+          <p class="text-muted">
+            To deliver battery monitoring and alerts, SpareTank reads standard system battery broadcasts provided by Android:
+          </p>
+          <ul class="list-disc pl-5 text-muted space-y-1">
+            <li>Battery percentage level and charging status (charging, discharging, AC, USB, wireless).</li>
+            <li>Hardware health status, battery temperature, and voltage.</li>
+          </ul>
+          <p class="text-brand-cyan font-medium text-xs sm:text-sm bg-brand-cyan/10 p-3 rounded-lg border border-brand-cyan/20">
+            🔒 All telemetry processing occurs strictly on your local device in real time. None of this battery telemetry is recorded, transmitted to any remote server, or shared with third parties.
+          </p>
+        </div>
+      </section>
+
+      <hr class="border-border-subtle" />
+
+      <section class="space-y-4">
+        <h2 class="text-xl font-bold text-brand-emerald">2. Prominent Disclosure: Accessibility Service API Usage</h2>
+        <p class="text-muted">
+          SpareTank includes an optional Accessibility Service (<code>SpareTankAccessibilityService</code>). In accordance with Google Play's User Data and Accessibility API Policies:
+        </p>
+        <div class="p-4 rounded-xl bg-surface border border-border-hover space-y-3">
+          <div class="flex items-start gap-2">
+            <span class="text-brand-emerald font-bold">✓</span>
+            <div>
+              <strong>Specific Purpose:</strong> The Accessibility Service is used solely to execute standard Android global actions (<code>GLOBAL_ACTION_POWER_DIALOG</code> and <code>GLOBAL_ACTION_LOCK_SCREEN</code>) when the battery drops to your designated critical reserve threshold (Spare Tank floor), providing an assistive power-off mechanism for unrooted devices.
+            </div>
+          </div>
+          <div class="flex items-start gap-2">
+            <span class="text-brand-emerald font-bold">✓</span>
+            <div>
+              <strong>No Data Collection or Keystroke Logging:</strong> SpareTank does <strong>NOT</strong> use Accessibility APIs to monitor user interactions, inspect screen contents (<code>canRetrieveWindowContent="false"</code>), record keystrokes, alter settings without consent, or circumvent any Android security controls.
+            </div>
+          </div>
+          <div class="flex items-start gap-2">
+            <span class="text-brand-emerald font-bold">✓</span>
+            <div>
+              <strong>Voluntary &amp; User-Controlled:</strong> The service is disabled by default and can only be enabled or disabled explicitly by the user within Android System Settings at any time.
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <hr class="border-border-subtle" />
+
+      <section class="space-y-3">
+        <h2 class="text-xl font-bold text-brand-emerald">3. Permissions Used and Why</h2>
+        <ul class="space-y-2 text-muted">
+          <li>• <strong class="text-main">Notifications (<code>POST_NOTIFICATIONS</code>)</strong>: Used to display persistent foreground monitoring status and trigger alerts when you need to plug in, unplug, or respond to the reserve countdown.</li>
+          <li>• <strong class="text-main">Foreground Service (<code>FOREGROUND_SERVICE</code>, <code>FOREGROUND_SERVICE_SPECIAL_USE</code>)</strong>: Required for real-time monitoring of battery state changes when the app is in the background.</li>
+          <li>• <strong class="text-main">Full Screen Intent (<code>USE_FULL_SCREEN_INTENT</code>)</strong>: Used to display the emergency reserve countdown dialog over the lock screen so you have time to cancel automated shutdown if actively using your device.</li>
+          <li>• <strong class="text-main">Ignore Battery Optimizations (<code>REQUEST_IGNORE_BATTERY_OPTIMIZATIONS</code>)</strong>: Requested optionally so Android's Doze mode does not suspend the background battery listener.</li>
+          <li>• <strong class="text-main">Vibrate (<code>VIBRATE</code>) &amp; Wake Lock (<code>WAKE_LOCK</code>)</strong>: Used for tactile alerts and to briefly wake the screen during emergency countdowns.</li>
+        </ul>
+      </section>
+
+      <hr class="border-border-subtle" />
+
+      <section class="space-y-3">
+        <h2 class="text-xl font-bold text-brand-emerald">4. Advertising &amp; Third-Party SDKs</h2>
+        <ul class="space-y-2 text-muted">
+          <li>• <strong class="text-main">SpareTank (Free Edition)</strong>: Integrates Google Mobile Ads (AdMob) to display banner ads. AdMob may collect and process device identifiers, advertising ID (GAID), and diagnostic data in accordance with <a href="https://policies.google.com/privacy" target="_blank" rel="noopener" class="text-brand-cyan underline">Google's Privacy Policy</a>.</li>
+          <li>• <strong class="text-main">SpareTank Pro</strong>: 100% ad-free and contains no advertising SDKs or third-party tracking libraries.</li>
+        </ul>
+      </section>
+
+      <hr class="border-border-subtle" />
+
+      <section class="space-y-3">
+        <h2 class="text-xl font-bold text-brand-emerald">5. Contact Us</h2>
+        <p class="text-muted">
+          If you have any questions or suggestions regarding our Privacy Policy or data practices, please contact us:
+        </p>
+        <div class="p-4 rounded-xl bg-surface border border-border-subtle font-mono text-xs sm:text-sm">
+          <strong>Developer / Publisher:</strong> Tekromancy<br/>
+          <strong>Email:</strong> <a href="mailto:support@tekromancy.com" class="text-brand-emerald hover:underline">support@tekromancy.com</a><br/>
+          <strong>Website:</strong> <a href="https://sparetank.tekromancy.com" class="text-brand-emerald hover:underline">https://sparetank.tekromancy.com</a>
+        </div>
+      </section>
+    </div>
+  </div>
+</Layout>

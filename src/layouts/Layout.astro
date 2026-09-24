@@ -1,0 +1,164 @@
+---
+interface Props {
+  title: string;
+  description?: string;
+}
+
+const { title, description = "Intelligent Android battery longevity & emergency reserve manager." } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href="https://sparetank.tekromancy.com" />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://sparetank.tekromancy.com" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:site_name" content="SpareTank by Tekromancy" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+
+    <!-- JSON-LD Structured Data for Google Search -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "SpareTank",
+      "operatingSystem": "Android",
+      "applicationCategory": "UtilitiesApplication",
+      "offers": [
+        {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "USD",
+          "name": "SpareTank Free Edition",
+          "url": "https://play.google.com/store/apps/details?id=com.tekromancy.sparetank"
+        },
+        {
+          "@type": "Offer",
+          "price": "2.99",
+          "priceCurrency": "USD",
+          "name": "SpareTank Pro Edition",
+          "url": "https://play.google.com/store/apps/details?id=com.tekromancy.sparetankpro"
+        }
+      ]
+    }
+    </script>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  </head>
+  <body class="bg-base text-main min-h-screen flex flex-col font-sans selection:bg-brand-emerald selection:text-black">
+    <!-- Navigation Header -->
+    <header class="sticky top-0 z-50 backdrop-blur-md bg-surface/80 border-b border-border-subtle">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
+        <a href="/" class="flex items-center gap-2 group">
+          <span class="text-2xl transform group-hover:scale-110 transition-transform">🔋</span>
+          <span class="font-extrabold text-xl tracking-tight bg-gradient-to-r from-brand-emerald to-brand-cyan bg-clip-text text-transparent">
+            SpareTank
+          </span>
+          <span class="text-xs px-2 py-0.5 rounded-full bg-brand-emerald/10 text-brand-emerald border border-brand-emerald/20 font-mono">
+            by Tekromancy
+          </span>
+        </a>
+
+        <nav class="flex items-center gap-6 text-sm font-medium">
+          <a href="/#features" class="text-muted hover:text-main transition-colors">Features</a>
+          <a href="/#download" class="text-muted hover:text-main transition-colors">Download</a>
+          <a href="/blog" class="text-muted hover:text-main transition-colors">News & Releases</a>
+          <a href="/privacy" class="text-muted hover:text-main transition-colors">Privacy Policy</a>
+          <a 
+            href="#download" 
+            class="hidden sm:inline-flex items-center justify-center px-4 py-2 rounded-lg bg-brand-emerald text-black font-bold hover:bg-brand-emerald/90 transition-all shadow-lg shadow-brand-emerald/20"
+          >
+            Get App
+          </a>
+        </nav>
+      </div>
+    </header>
+
+    <!-- Main Page Content -->
+    <main class="flex-1">
+      <slot />
+    </main>
+
+    <!-- Footer -->
+    <footer class="border-t border-border-subtle bg-surface/40 mt-20">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 py-12 flex flex-col sm:flex-row items-center justify-between gap-6">
+        <div class="flex flex-col items-center sm:items-start gap-1">
+          <div class="flex items-center gap-2 font-bold">
+            <span>🔋</span>
+            <span>SpareTank</span>
+            <span class="text-xs text-muted">© {new Date().getFullYear()} Tekromancy</span>
+          </div>
+          <p class="text-xs text-muted">
+            Lithium-ion longevity management and emergency reserve guardian.
+          </p>
+        </div>
+
+        <div class="flex items-center gap-6 text-sm text-muted">
+          <a href="/privacy" class="hover:text-main transition-colors">Privacy Policy</a>
+          <a href="/blog" class="hover:text-main transition-colors">Blog & Releases</a>
+          <a href="https://github.com/tekromancy" target="_blank" rel="noopener" class="hover:text-main transition-colors">GitHub</a>
+          <a href="mailto:support@tekromancy.com" class="hover:text-main transition-colors">Contact Support</a>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
+
+<style is:global>
+  :root {
+    --bg-base: #0B0F17;
+    --bg-surface: #111827;
+    --bg-card: #162032;
+    --border-subtle: #1F2937;
+    --border-hover: #374151;
+    --text-main: #F9FAFB;
+    --text-muted: #9CA3AF;
+    --brand-emerald: #10B981;
+    --brand-cyan: #06B6D4;
+    --brand-orange: #F59E0B;
+    --brand-red: #EF4444;
+  }
+
+  body {
+    background-color: var(--bg-base);
+    color: var(--text-main);
+    font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  }
+
+  .bg-base { background-color: var(--bg-base); }
+  .bg-surface { background-color: var(--bg-surface); }
+  .bg-card { background-color: var(--bg-card); }
+  .border-border-subtle { border-color: var(--border-subtle); }
+  .border-border-hover { border-color: var(--border-hover); }
+  .text-main { color: var(--text-main); }
+  .text-muted { color: var(--text-muted); }
+  .text-brand-emerald { color: var(--brand-emerald); }
+  .bg-brand-emerald { background-color: var(--brand-emerald); }
+  .text-brand-cyan { color: var(--brand-cyan); }
+  .text-brand-orange { color: var(--brand-orange); }
+  .text-brand-red { color: var(--brand-red); }
+
+  /* Utility glows */
+  .glow-emerald {
+    box-shadow: 0 0 35px -5px rgba(16, 185, 129, 0.25);
+  }
+  .glow-cyan {
+    box-shadow: 0 0 35px -5px rgba(6, 182, 212, 0.25);
+  }
+</style>

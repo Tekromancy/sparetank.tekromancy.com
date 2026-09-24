@@ -1,0 +1,203 @@
+---
+import Layout from '../layouts/Layout.astro';
+import BatteryCalculator from '../components/BatteryCalculator.astro';
+---
+
+<Layout title="SpareTank • Intelligent Battery Longevity & Emergency Power Guard">
+  <!-- Hero Section -->
+  <section class="relative pt-20 pb-28 overflow-hidden">
+    <div class="absolute inset-0 bg-[radial-gradient(ellipse_80%_60%_at_50%_-20%,rgba(16,185,129,0.18),rgba(255,255,255,0))]"></div>
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 relative">
+      <div class="text-center max-w-3xl mx-auto space-y-6">
+        <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-brand-emerald/10 border border-brand-emerald/20 text-brand-emerald text-sm font-semibold">
+          <span class="animate-pulse">●</span> SpareTank for Android is Live on Google Play
+        </div>
+
+        <h1 class="text-4xl sm:text-6xl font-extrabold tracking-tight leading-tight">
+          Never return to a dead phone. <br/>
+          <span class="bg-gradient-to-r from-brand-emerald via-brand-cyan to-blue-400 bg-clip-text text-transparent">
+            Guaranteed emergency battery.
+          </span>
+        </h1>
+
+        <p class="text-lg sm:text-xl text-muted leading-relaxed">
+          SpareTank is your intelligent battery longevity coach. It prevents cycle degradation with 25%–75% charging alerts, and automatically preserves an untouched <strong>15% spare tank</strong> for when you actually need it.
+        </p>
+
+        <div class="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4">
+          <a 
+            href="#download"
+            class="w-full sm:w-auto px-8 py-4 rounded-xl bg-brand-emerald text-black font-bold text-base hover:bg-brand-emerald/90 transition-all glow-emerald flex items-center justify-center gap-2"
+          >
+            <span>📱</span>
+            <span>Download on Google Play</span>
+          </a>
+          <a 
+            href="#features"
+            class="w-full sm:w-auto px-8 py-4 rounded-xl bg-surface border border-border-hover text-main font-semibold text-base hover:bg-card transition-all flex items-center justify-center gap-2"
+          >
+            <span>⚡</span>
+            <span>Explore Longevity Rules</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- App Preview Graphic / Gauge Mockup -->
+      <div class="mt-16 max-w-4xl mx-auto rounded-2xl border border-border-hover bg-card/60 p-6 sm:p-10 shadow-2xl backdrop-blur-xl">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-center">
+          <div class="p-6 rounded-xl bg-surface/70 border border-border-subtle flex flex-col items-center">
+            <span class="text-3xl mb-2">⚡</span>
+            <div class="text-2xl font-black text-brand-cyan">75% Cap</div>
+            <div class="text-xs uppercase tracking-wider text-muted font-bold mt-1">Unplug Guidance</div>
+            <p class="text-xs text-muted mt-2">Stops high-voltage electrolyte stress, doubling battery cycle lifespan.</p>
+          </div>
+
+          <div class="p-6 rounded-xl bg-surface/70 border border-border-subtle flex flex-col items-center">
+            <span class="text-3xl mb-2">🔌</span>
+            <div class="text-2xl font-black text-brand-orange">25% Floor</div>
+            <div class="text-xs uppercase tracking-wider text-muted font-bold mt-1">Plug In Reminder</div>
+            <p class="text-xs text-muted mt-2">Alerts you before deep discharge stress damages lithium anodes.</p>
+          </div>
+
+          <div class="p-6 rounded-xl bg-surface/70 border border-border-subtle flex flex-col items-center">
+            <span class="text-3xl mb-2">🚨</span>
+            <div class="text-2xl font-black text-brand-red">15% Reserve</div>
+            <div class="text-xs uppercase tracking-wider text-muted font-bold mt-1">The "Spare Tank"</div>
+            <p class="text-xs text-muted mt-2">Countdown shutdown alerts preserve vital charge when phone is left idle.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Interactive Battery Longevity Calculator Section -->
+      <div class="mt-16">
+        <BatteryCalculator />
+      </div>
+    </div>
+  </section>
+
+  <!-- Feature Details Section -->
+  <section id="features" class="py-20 border-t border-border-subtle bg-surface/30">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6">
+      <div class="text-center max-w-2xl mx-auto mb-16 space-y-3">
+        <h2 class="text-3xl font-extrabold tracking-tight">Engineered for Hardware Protection</h2>
+        <p class="text-muted">Designed around scientific battery health guidelines and resilient background automation.</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div class="p-8 rounded-2xl bg-card border border-border-subtle hover:border-border-hover transition-colors">
+          <div class="w-12 h-12 rounded-xl bg-brand-emerald/10 border border-brand-emerald/20 flex items-center justify-center text-brand-emerald text-xl font-bold mb-4">
+            01
+          </div>
+          <h3 class="text-xl font-bold mb-2">25% – 75% Battery Longevity Rule</h3>
+          <p class="text-muted text-sm leading-relaxed">
+            Standard lithium-ion phone cells degrade exponentially when kept at 100% trickle charge or drained to zero. SpareTank gives actionable, polite alerts to unplug at 75% and recharge at 25%.
+          </p>
+        </div>
+
+        <div class="p-8 rounded-2xl bg-card border border-border-subtle hover:border-border-hover transition-colors">
+          <div class="w-12 h-12 rounded-xl bg-brand-cyan/10 border border-brand-cyan/20 flex items-center justify-center text-brand-cyan text-xl font-bold mb-4">
+            02
+          </div>
+          <h3 class="text-xl font-bold mb-2">Emergency Spare Tank Shutdown</h3>
+          <p class="text-muted text-sm leading-relaxed">
+            Left your phone in your coat or backpack while traveling? SpareTank initiates a 60-second interactive countdown. If unanswered, it powers off the device so you still have 15% power left when needed.
+          </p>
+        </div>
+
+        <div class="p-8 rounded-2xl bg-card border border-border-subtle hover:border-border-hover transition-colors">
+          <div class="w-12 h-12 rounded-xl bg-purple-500/10 border border-purple-500/20 flex items-center justify-center text-purple-400 text-xl font-bold mb-4">
+            03
+          </div>
+          <h3 class="text-xl font-bold mb-2">Multi-Tiered Execution Engine</h3>
+          <p class="text-muted text-sm leading-relaxed">
+            Supports silent root shutdown (`su`), elevated wireless ADB (`Shizuku`), and non-rooted assistive Accessibility dialog fallback. Works across all Android 8.0+ devices.
+          </p>
+        </div>
+
+        <div class="p-8 rounded-2xl bg-card border border-border-subtle hover:border-border-hover transition-colors">
+          <div class="w-12 h-12 rounded-xl bg-amber-500/10 border border-amber-500/20 flex items-center justify-center text-amber-400 text-xl font-bold mb-4">
+            04
+          </div>
+          <h3 class="text-xl font-bold mb-2">Zero Tracking & Local Processing</h3>
+          <p class="text-muted text-sm leading-relaxed">
+            All telemetry, temperatures, voltages, and battery states remain 100% on your device. No user tracking, no background analytic profiling, and zero personal data collection.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Product Editions & Download Section -->
+  <section id="download" class="py-24 max-w-6xl mx-auto px-4 sm:px-6">
+    <div class="text-center max-w-2xl mx-auto mb-16 space-y-3">
+      <h2 class="text-3xl font-extrabold tracking-tight">Choose Your Edition</h2>
+      <p class="text-muted">Available now on Google Play in free ad-supported and premium pro editions.</p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+      <!-- Free Edition Card -->
+      <div class="p-8 rounded-2xl bg-card border border-border-subtle flex flex-col justify-between">
+        <div>
+          <div class="inline-block px-3 py-1 rounded-full bg-border-subtle text-xs font-semibold text-muted mb-4">
+            Free Edition
+          </div>
+          <h3 class="text-2xl font-black mb-1">SpareTank: Battery Longevity</h3>
+          <p class="text-sm text-brand-emerald font-semibold mb-4">Free on Google Play</p>
+          <p class="text-muted text-sm mb-6">
+            Includes all battery longevity alerts, interactive countdown warnings, and customizable charging thresholds with non-intrusive AdMob banner support.
+          </p>
+
+          <ul class="text-sm space-y-3 text-muted border-t border-border-subtle pt-6">
+            <li class="flex items-center gap-2">✓ Full battery monitoring & telemetry</li>
+            <li class="flex items-center gap-2">✓ Customizable 25% / 75% / 15% thresholds</li>
+            <li class="flex items-center gap-2">✓ Emergency reserve countdown alarm</li>
+            <li class="flex items-center gap-2 text-muted/60">• Contains AdMob banner</li>
+          </ul>
+        </div>
+
+        <a 
+          href="https://play.google.com/store/apps/details?id=com.tekromancy.sparetank"
+          target="_blank"
+          rel="noopener"
+          class="mt-8 w-full py-3.5 rounded-xl bg-surface border border-border-hover text-main font-bold text-center hover:bg-border-subtle transition-all"
+        >
+          Get SpareTank Free
+        </a>
+      </div>
+
+      <!-- Pro Edition Card -->
+      <div class="p-8 rounded-2xl bg-card border-2 border-brand-emerald flex flex-col justify-between glow-emerald relative">
+        <div class="absolute -top-3 right-6 px-3 py-0.5 rounded-full bg-brand-emerald text-black text-xs font-black uppercase tracking-wider">
+          Best Experience
+        </div>
+
+        <div>
+          <div class="inline-block px-3 py-1 rounded-full bg-brand-emerald/10 text-brand-emerald text-xs font-semibold mb-4">
+            Pro Edition
+          </div>
+          <h3 class="text-2xl font-black mb-1">SpareTank Pro: Battery Guard</h3>
+          <p class="text-sm text-brand-cyan font-semibold mb-4">One-Time Paid App</p>
+          <p class="text-muted text-sm mb-6">
+            The ultimate lightweight battery preservation utility. 100% ad-free, completely excludes Google Mobile Ads SDK for minimal APK weight and maximum privacy.
+          </p>
+
+          <ul class="text-sm space-y-3 text-main border-t border-border-subtle pt-6">
+            <li class="flex items-center gap-2">✓ <strong>100% Ad-Free</strong> forever</li>
+            <li class="flex items-center gap-2">✓ Zero Advertising SDKs bundled</li>
+            <li class="flex items-center gap-2">✓ Priority updates & release channel</li>
+            <li class="flex items-center gap-2">✓ Direct support from Tekromancy team</li>
+          </ul>
+        </div>
+
+        <a 
+          href="https://play.google.com/store/apps/details?id=com.tekromancy.sparetankpro"
+          target="_blank"
+          rel="noopener"
+          class="mt-8 w-full py-3.5 rounded-xl bg-brand-emerald text-black font-extrabold text-center hover:bg-brand-emerald/90 transition-all"
+        >
+          Get SpareTank Pro
+        </a>
+      </div>
+    </div>
+  </section>
+</Layout>

@@ -1,0 +1,47 @@
+---
+import Layout from '../../layouts/Layout.astro';
+---
+
+<Layout title="Why Charging Between 25% and 75% Extends Battery Life • SpareTank Blog">
+  <article class="max-w-3xl mx-auto px-4 sm:px-6 py-16">
+    <a href="/blog" class="text-sm font-semibold text-brand-emerald hover:underline mb-8 inline-block">
+      ← Back to News &amp; Releases
+    </a>
+
+    <header class="mb-10 space-y-3">
+      <div class="flex items-center gap-3 text-xs font-mono text-muted">
+        <span>September 20, 2026</span>
+        <span>•</span>
+        <span class="text-brand-cyan font-semibold">Engineering &amp; Science</span>
+      </div>
+      <h1 class="text-3xl sm:text-5xl font-black tracking-tight leading-tight">
+        Why Charging Between 25% and 75% Extends Battery Life by 2-3x
+      </h1>
+    </header>
+
+    <div class="prose prose-invert max-w-none space-y-6 text-main/90 leading-relaxed text-base">
+      <p>
+        Most smartphone users plug in their phones overnight, letting them stay pinned at 100% capacity for 6 to 8 hours under high voltage. Others wait until their phone hits 1% or completely shuts off before looking for a charger.
+      </p>
+
+      <p>
+        From an electrochemical perspective, both extremes cause irreversible mechanical and structural degradation inside lithium-ion pouch cells.
+      </p>
+
+      <h2 class="text-2xl font-bold text-brand-emerald pt-4">1. High Voltage Electrolyte Oxidation (&gt; 75%)</h2>
+      <p class="text-muted">
+        When a lithium cell approaches 4.2V to 4.35V (typically above 80% state of charge), the cathode experiences peak delithiation. This leads to transition metal dissolution, electrolyte oxidation, and impedance rise. Keeping the charge cap near 75% avoids this high-voltage degradation phase entirely.
+      </p>
+
+      <h2 class="text-2xl font-bold text-brand-orange pt-4">2. Deep Discharge Mechanical Stress (&lt; 25%)</h2>
+      <p class="text-muted">
+        Conversely, discharging below 20% causes high mechanical volume changes within graphite anode layers. The Solid Electrolyte Interphase (SEI) layer cracks, leading to continuous electrolyte consumption and premature capacity fade.
+      </p>
+
+      <h2 class="text-2xl font-bold text-brand-cyan pt-4">How SpareTank Automates the Sweet Spot</h2>
+      <p class="text-muted">
+        SpareTank runs locally in the background using minimal power to alert you when your phone reaches 75% (so you can unplug) or drops to 25% (prompting you to plug in). This simple intervention can extend your phone battery's operational lifespan from 2 years to 4+ years.
+      </p>
+    </div>
+  </article>
+</Layout>
