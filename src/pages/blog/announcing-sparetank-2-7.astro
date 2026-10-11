@@ -1,0 +1,98 @@
+---
+import Layout from '../../layouts/Layout.astro';
+---
+
+<Layout title="Announcing SpareTank 2.7 • SpareTank Blog">
+  <article class="max-w-3xl mx-auto px-4 sm:px-6 py-16">
+    <a href="/blog" class="text-sm font-semibold text-brand-emerald hover:underline mb-8 inline-block">
+      ← Back to News &amp; Releases
+    </a>
+
+    <header class="mb-10 space-y-3">
+      <div class="flex items-center gap-3 text-xs font-mono text-muted">
+        <span>October 10, 2026</span>
+        <span>•</span>
+        <span class="text-brand-emerald font-semibold">Release 0.0.15 (v2.7)</span>
+      </div>
+      <h1 class="text-3xl sm:text-5xl font-black tracking-tight leading-tight">
+        Announcing SpareTank 2.7: Reverse Charge Guardian, Circadian Top-Off &amp; Electrochemical Digital Twin
+      </h1>
+    </header>
+
+    <div class="prose prose-invert max-w-none space-y-6 text-main/90 leading-relaxed text-base">
+      <p>
+        Today, Tekromancy is rolling out our largest architectural update yet to <strong>SpareTank</strong> (Release 0.0.15 / v2.7). This milestone expands SpareTank from a standalone battery monitor into a comprehensive cross-device longevity platform.
+      </p>
+
+      <p>
+        While previous releases focused on the foundational 25%–75% cycle alert and 15% emergency reserve shutdown, version 2.7 tackles modern multi-device lifestyles: reverse wireless charging, overnight charging degradation, vehicle mount solar overheating, and cross-device Wear OS telemetry.
+      </p>
+
+      <h2 class="text-2xl font-bold text-brand-emerald pt-4">🚀 Key Pillars in SpareTank 2.7</h2>
+
+      <div class="space-y-6 pt-2">
+        <div class="p-6 rounded-xl bg-card border border-border-subtle">
+          <h3 class="text-lg font-bold text-brand-cyan mb-2">1. Reverse Wireless &amp; OTG Power-Bank Guardian</h3>
+          <p class="text-muted text-sm leading-relaxed">
+            Using your phone to reverse-charge earbuds or a smartwatch via Qi or USB-C OTG shouldn't drain your phone to zero. The new Reverse Charge Guardian integrates directly with Linux kernel sysfs transmitter nodes (Google Pixel, Samsung Wireless PowerShare, OnePlus/Oppo, Qualcomm PMI). When your phone reaches your reserve floor (default: 35%), SpareTank instantly cuts off reverse transmission and alerts you.
+          </p>
+        </div>
+
+        <div class="p-6 rounded-xl bg-card border border-border-subtle">
+          <h3 class="text-lg font-bold text-brand-emerald mb-2">2. Smart Commute &amp; Alarm-Aware Circadian Top-Off</h3>
+          <p class="text-muted text-sm leading-relaxed">
+            Keeping a lithium cell at 100% trickle-charge for 7–8 hours every night causes severe electrolyte breakdown and cathode oxidation. SpareTank now checks your morning alarm clock via Android's AlarmManager. Charging is held at a safe 70%–75% plateau through the night, then automatically top-off finishes right before your alarm rings.
+          </p>
+        </div>
+
+        <div class="p-6 rounded-xl bg-card border border-border-subtle">
+          <h3 class="text-lg font-bold text-brand-orange mb-2">3. Electrochemical Safety &amp; Thermal Stress Defense</h3>
+          <p class="text-muted text-sm leading-relaxed">
+            Lithium cells have dangerous chemical boundaries: charging below 5°C causes irreversible metallic lithium plating on graphite anodes, while windshield car mounts in direct sunlight lead to solar overheating (>41.5°C). SpareTank monitors ambient and charging conditions to halt smart plugs and protect your hardware.
+          </p>
+        </div>
+
+        <div class="p-6 rounded-xl bg-card border border-border-subtle">
+          <h3 class="text-lg font-bold text-purple-400 mb-2">4. Bidirectional Wear OS Cross-Device Watchdog</h3>
+          <p class="text-muted text-sm leading-relaxed">
+            Smartwatches left on magnetic charging docks frequently overheat or stay pinned at 100%. With our dedicated <code>:wear</code> companion service, your phone monitors your watch's battery level in real time and rings 75% unplug reminders and 15% reserve warnings for your wearable.
+          </p>
+        </div>
+
+        <div class="p-6 rounded-xl bg-card border border-border-subtle">
+          <h3 class="text-lg font-bold text-brand-cyan mb-2">5. Zero-Cloud Local Wi-Fi Fleet Monitoring</h3>
+          <p class="text-muted text-sm leading-relaxed">
+            Keep tabs on all family or test devices without creating an account or sending telemetry to third-party clouds. SpareTank utilizes standard Android mDNS service discovery (<code>_sparetank._tcp.</code>) and an offline local HTTP status endpoint on port 8989 to aggregate battery telemetry across your home Wi-Fi network.
+          </p>
+        </div>
+
+        <div class="p-6 rounded-xl bg-card border border-border-subtle">
+          <h3 class="text-lg font-bold text-yellow-400 mb-2">6. Interactive Electrochemical Digital Twin (Sandbox)</h3>
+          <p class="text-muted text-sm leading-relaxed">
+            Curious how much lifespan you gain by capping charge at 75%? Our built-in simulator utilizes Arrhenius thermal kinetic acceleration (<code>k = A &middot; exp(-E<sub>a</sub> / RT)</code>) and mechanical Depth-of-Discharge stress matrices (<code>DoD<sup>1.6</sup></code>) to project 5-year degradation curves, capacity retained, and replacement costs saved.
+          </p>
+        </div>
+      </div>
+
+      <h2 class="text-2xl font-bold text-brand-emerald pt-6">🔒 Absolute Privacy Preserved</h2>
+      <p>
+        As always, our core philosophy remains unchanged: all telemetry, simulations, and network discovery are performed 100% locally on your device. The <strong>SpareTank Pro</strong> edition contains zero advertising SDKs, zero cloud trackers, and zero external analytics.
+      </p>
+
+      <div class="mt-12 p-6 sm:p-8 rounded-xl bg-card border border-brand-emerald/40 glow-emerald">
+        <h3 class="font-bold text-xl mb-2 text-main">Get the Latest Build</h3>
+        <p class="text-muted text-sm mb-4 leading-relaxed">
+          The 0.0.15 update is rolling out to closed testing participants on Google Play. Join our testing community to test the new features:
+        </p>
+        <div class="flex flex-col sm:flex-row flex-wrap gap-3">
+          <a href="https://groups.google.com/g/tekromancy" target="_blank" rel="noopener" class="inline-flex items-center justify-center px-5 py-2.5 rounded-lg bg-brand-emerald text-black font-bold text-sm hover:bg-brand-emerald/90 transition-all">
+            Join Closed Beta Group
+          </a>
+          <a href="/#download" class="inline-flex items-center justify-center px-5 py-2.5 rounded-lg bg-surface border border-border-hover text-main font-semibold text-sm hover:bg-card transition-all">
+            Download &amp; Play Track Details
+          </a>
+        </div>
+      </div>
+    </div>
+  </article>
+</Layout>
